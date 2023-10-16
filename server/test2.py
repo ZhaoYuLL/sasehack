@@ -38,6 +38,20 @@ def generate_frames():
         yield (b"--frame\r\n" b"Content-Type: image/jpeg\r\n\r\n" + frame + b"\r\n")
 
 
+while True:
+    a = a + 1
+    # 4.Create a frame object
+    check, frame = video.read()
+    # Converting to grayscale
+    # gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+    # 5.show the frame!
+    cv2.imshow("Capturing", frame)
+    # 6.for playing
+    key = cv2.waitKey(1)
+    if key == ord("q"):
+        break
+
+
 @app.route("/")
 def index():
     return render_template("client/generate.html")
