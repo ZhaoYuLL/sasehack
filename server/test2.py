@@ -28,7 +28,7 @@ def generate_frames():
             break
         else:
             cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
-            text = f"Random Text: {random.randint(1, 100)}"
+            # text = f"Random Text: {random.randint(1, 100)}"
             cv2.putText(
                 frame, text, position, font, font_scale, font_color, font_thickness
             )
