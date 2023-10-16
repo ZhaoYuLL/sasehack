@@ -45,9 +45,6 @@ while True:
     # Converting to grayscale
     # gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
     # 5.show the frame!
-    cv2.imshow("Capturing", frame)
-    # 6.for playing
-    key = cv2.waitKey(1)
     if key == ord("q"):
         break
 
