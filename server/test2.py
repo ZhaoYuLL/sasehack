@@ -39,7 +39,6 @@ def generate_frames():
 
 
 while True:
-    a = a + 1
     # 4.Create a frame object
     check, frame = video.read()
     # Converting to grayscale
