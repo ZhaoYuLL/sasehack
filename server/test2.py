@@ -4,6 +4,8 @@ import random
 
 app = Flask(__name__)
 camera = cv2.VideoCapture(0)
+video = cv2.VideoCapture(0)
+
 
 left = 5
 top = 5
