@@ -15,9 +15,9 @@ bottom = 5
 text = "Happiness!"
 font = cv2.FONT_HERSHEY_SIMPLEX
 font_scale = 1
-font_color = (0, 255, 0)  # Green color in BGR
+font_color = (0, 0, 255)  # Green color in BGR
 font_thickness = 2
-position = (50, 100)  # Coordinates (x, y) where the text will be displayed
+position = (100, 50)  # Coordinates (x, y) where the text will be displayed
 
 
 def generate_frames():
