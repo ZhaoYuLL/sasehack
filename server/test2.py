@@ -54,7 +54,7 @@ while True:
 
 @app.route("/")
 def index():
-    return render_template("client/generate.html")
+    return render_template("client/generate.js")
 
 
 # whatever the route it is
