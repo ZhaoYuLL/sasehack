@@ -21,8 +21,6 @@ position = (100, 50)  # Coordinates (x, y) where the text will be displayed
 
 
 def generate_frames():
-    i = 0
-
     while True:
         ## read the camera frame
         success, frame = camera.read()
