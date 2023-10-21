@@ -21,6 +21,8 @@ position = (100, 50)  # Coordinates (x, y) where the text will be displayed
 
 
 def generate_frames():
+    i = 0
+
     while True:
         ## read the camera frame
         success, frame = camera.read()
@@ -45,6 +47,8 @@ while True:
     # gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
     # 5.show the frame!
     if key == ord("q"):
+        break
+    elif key == ord("w"):
         break
 
 
