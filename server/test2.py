@@ -58,7 +58,7 @@ def index():
 
 
 # whatever the route it is
-@app.route("/video")
+@app.route("/vid_gen")
 def video():
     return Response(
         generate_frames(), mimetype="multipart/x-mixed-replace; boundary=frame"
