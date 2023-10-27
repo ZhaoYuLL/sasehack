@@ -1,69 +1,34 @@
-from flask import Flask, render_template, Response
+from deepface import DeepFace
 import cv2
-import random
 
-app = Flask(__name__)
-camera = cv2.VideoCapture(0)
+faceCascade = cv2.CascadeClassifier(
+    cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+)
+
+backends = ["opencv", "ssd", "dlib", "retinaface", "mediapipe"]
+
 video = cv2.VideoCapture(0)
 
-
-left = 5
-top = 5
-right = 5
-bottom = 5
-
-text = "Happiness!"
-font = cv2.FONT_HERSHEY_SIMPLEX
-font_scale = 1
-font_color = (255, 0, 0)  # Green color in BGR
-font_thickness = 2
-position = (100, 50)  # Coordinates (x, y) where the text will be displayed
-
-
-def generate_frames():
-    i = 0
-
-    while True:
-        ## read the camera frame
-        success, frame = camera.read()
-        if not success:
-            break
-        else:
-            cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
-            # text = f"Random Text: {random.randint(1, 100)}"
-            cv2.putText(
-                frame, text, position, font, font_scale, font_color, font_thickness
-            )
-            ret, buffer = cv2.imencode(".jpg", frame)
-            frame = buffer.tobytes()
-
-        yield (b"--frame\r\n" b"Content-Type: image/jpeg\r\n\r\n" + frame + b"\r\n")
-
+a = 0
 
 while True:
-    # 4.Create a frame object
+    a = a + 1
     check, frame = video.read()
-    # Converting to grayscale
-    # gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
-    # 5.show the frame!
-    if key == ord("q"):
+    cv2.imshow("Capturing", frame)
+
+    # Press 'q' to capture and save the frame
+    if cv2.waitKey(1) & 0xFF == ord("q"):
+        cv2.imwrite(
+            "/Users/zhao/Desktop/person projacks/sasehack/server/photo.jpg", frame
+        )
         break
-    elif key == ord("w"):
-        break
 
+video.release()
+cv2.destroyAllWindows()
 
-@app.route("/")
-def index():
-    return render_template("client/generate.js")
+img = cv2.imread("/Users/zhao/Desktop/person projacks/sasehack/server/photo.jpg")
+result = DeepFace.analyze(img, actions=["emotion"])
+print(result)
 
-
-# whatever the route it is
-@app.route("/vid_gen")
-def video():
-    return Response(
-        generate_frames(), mimetype="multipart/x-mixed-replace; boundary=frame"
-    )
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
+# Print the emotion analysis results
+print("Emotion:", result["dominant_emotion"])
