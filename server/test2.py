@@ -12,7 +12,6 @@ video = cv2.VideoCapture(0)
 a = 0
 
 while True:
-    a = a + 1
     check, frame = video.read()
     cv2.imshow("Capturing", frame)
 
