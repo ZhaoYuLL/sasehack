@@ -9,7 +9,7 @@ backends = ["opencv", "ssd", "dlib", "retinaface", "mediapipe"]
 
 video = cv2.VideoCapture(0)
 
-a = 0
+a = 1
 
 while True:
     check, frame = video.read()
